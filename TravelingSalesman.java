@@ -2,13 +2,13 @@ import java.util.*;
 import java.io.*;
 
 public class TravelingSalesman {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws FileNotFoundException{
 
     //here is the arraylist of cities
-    Scanner scanner = new Scanner (Cities.txt);
+    Scanner scanner = new Scanner(new File("Cities.txt"));
     ArrayList<String> cities = new ArrayList<String>();
     while (scanner.hasNextLine()) {
-      Scanner line = new Scanner(scanner.NextLine());
+      Scanner line = new Scanner(scanner.nextLine());
       String city1 = line.next();
       line.next();
       String city2 = line.next();
@@ -17,16 +17,16 @@ public class TravelingSalesman {
     }
 
     //now that each city is associated with a number in the ArrayList
-    Scanner getCosts = new Scanner(Cities.txt);
-    int length = cities.length();
+    scanner = new Scanner(new File("Cities.txt"));
+    int length = cities.size();
     int[][] costs = new int[length][length];
-    while (getCosts.hasNextLine()) {
-      Scanner line = new Scanner(getCosts.NextLine());
+    while (scanner.hasNextLine()) {
+      Scanner line = new Scanner(scanner.nextLine());
       String city1 = line.next();
       line.next();
       String city2 = line.next();
       int cost = line.nextInt();
-      costs[city1][city2] = cost;
+      costs[cities.indexOf(city1)][cities.indexOf(city2)] = cost;
     }
   }
 }
