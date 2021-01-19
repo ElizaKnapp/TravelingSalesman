@@ -16,6 +16,17 @@ public class TravelingSalesman {
       if (!cities.contains(city2)) cities.add(city2);
     }
 
-    //
+    //now that each city is associated with a number in the ArrayList
+    Scanner getCosts = new Scanner(Cities.txt);
+    int length = cities.length();
+    int[][] costs = new int[length][length];
+    while (getCosts.hasNextLine()) {
+      Scanner line = new Scanner(getCosts.NextLine());
+      String city1 = line.next();
+      line.next();
+      String city2 = line.next();
+      int cost = line.nextInt();
+      costs[city1][city2] = cost;
+    }
   }
 }
