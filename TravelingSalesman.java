@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class TravelingSalesman {
-  public static void main(String[] args) throws FileNotFoundException{
+  public static void main(String[] args) throws FileNotFoundException {
 
     //here is the arraylist of cities
     Scanner scanner = new Scanner(new File("Cities.txt"));
@@ -25,12 +25,39 @@ public class TravelingSalesman {
       String city1 = line.next();
       line.next();
       String city2 = line.next();
+      line.next();
       int cost = line.nextInt();
       costs[cities.indexOf(city1)][cities.indexOf(city2)] = cost;
       //below adds the reverse to the array
       costs[cities.indexOf(city2)][cities.indexOf(city1)] = cost;
     }
-
-
+    arrToString(costs);
   }
+
+    public static void arrToString(int[][] arr) {
+      System.out.print(" ");
+      for (int k = 0; k < arr[0].length; k++) {
+        System.out.print("   " + k);
+      }
+      System.out.println();
+      for (int i = 0; i < arr.length; i++) {
+        System.out.print(i + " [ ");
+        for (int j = 0; j < arr[0].length; j++) {
+          String curr = "" + arr[i][j];
+          if (curr.length() == 1) {
+            System.out.print(curr + "  ");
+          } else if (curr.length() ==2) {
+            System.out.print(curr + " ");
+          } else {
+            System.out.print(curr);
+          }
+          if (j != arr[0].length -1) {
+            System.out.print(" ");
+          }
+        }
+        System.out.print(" ]");
+        System.out.println();
+      }
+    }
+
 }
