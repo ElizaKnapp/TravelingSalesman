@@ -27,6 +27,10 @@ public class TravelingSalesman {
       String city2 = line.next();
       int cost = line.nextInt();
       costs[cities.indexOf(city1)][cities.indexOf(city2)] = cost;
+      //below adds the reverse to the array
+      costs[cities.indexOf(city2)][cities.indexOf(city1)] = cost;
     }
+
+
   }
 }
