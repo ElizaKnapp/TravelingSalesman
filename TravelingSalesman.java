@@ -32,6 +32,36 @@ public class TravelingSalesman {
       costs[cities.indexOf(city2)][cities.indexOf(city1)] = cost;
     }
     arrToString(costs);
+
+    ArrayList<Integer> values = new ArrayList<Integer>();
+    for(int i = 0; i < length; i++) {
+      values.add(i);
+    }
+
+    int ans = 1;
+    for (int i = 2; i <= length; i++) {
+      ans *= i;
+    }
+
+    int numberOfTimes = ans * 10;
+    int smallest = distance(values, costs);
+    for (int i = 0; i < numberOfTimes; i++) {
+      Collections.shuffle(values);
+      int holder = distance(values, costs);
+      if (holder < smallest) smallest = holder;
+    }
+
+    System.out.println(smallest);
+
+  }
+
+  public static int distance(ArrayList<Integer> values, int[][] costs) {
+    int ans = 0;
+    for (int i = 0; i < values.size() - 1; i++) {
+      int holder = costs[values.get(i)][values.get(i + 1)];
+      ans += holder;
+    }
+    return ans;
   }
 
     public static void arrToString(int[][] arr) {
