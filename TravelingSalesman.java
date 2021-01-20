@@ -31,7 +31,6 @@ public class TravelingSalesman {
       //below adds the reverse to the array
       costs[cities.indexOf(city2)][cities.indexOf(city1)] = cost;
     }
-    arrToString(costs);
 
     ArrayList<Integer> values = new ArrayList<Integer>();
     for(int i = 0; i < length; i++) {
